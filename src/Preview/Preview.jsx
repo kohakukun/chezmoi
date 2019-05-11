@@ -2,8 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import {MenuThingy} from './MenuThingy';
 import SwipeableViews from 'react-swipeable-views';
-import fork from '../static/media/fork.svg';
-import knife from '../static/media/knife.svg';
+import {Table} from '../Table';
+
 import { DetailView } from './DetailView';
 
 
@@ -23,15 +23,6 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'flex-end',
 
   },
-  table: {
-    background: 'green',
-    flexGrow: '0.8',
-    display: 'flex',
-  },
-  plate: {
-    background: 'pink',
-    flexGrow: 1,
-  },
   menu: {
     background: 'red',
     maxHeight: '50px',
@@ -50,27 +41,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const Preview = ({price, tags, title}) => {
+export const Preview = ({price, tags, title, height}) => {
   const classes = useStyles();
   return (
     <SwipeableViews
-      containerStyle={{height: 986}}
-      slideClassName={classes.slide}
+      containerStyle={{height}}
       axis="y"
       resistance
-      enableMouseEvents
+      enableMouseEvents      
+      slideStyle={{height}}
     >
       <div className={classes.root}>
         <div className={classes.title}>
           {title}
         </div>
-        <div className={classes.table}>
-          <img src={fork} alt="" />
-          <div className={classes.plate}>
-
-          </div>
-          <img src={knife} alt="" />
-        </div>
+        <Table/>
         <MenuThingy
           price={3}
           tags={['vegan']}
