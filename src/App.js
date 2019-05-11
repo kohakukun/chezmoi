@@ -90,9 +90,9 @@ const App = (props) => {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Router>
-          <Route path="/" component={Preview} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register-user" component={RegisterUserPage} />
+          <Route path="/dining" component={Preview} />
         </Router>
       </main>
     </div>

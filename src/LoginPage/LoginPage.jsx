@@ -1,11 +1,52 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from "@material-ui/styles";
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core/styles';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles(theme => ({}));
 
 export const LoginPage = () => {
 
 
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    
+
     const classes = useStyles();
-    return (<div>Login</div>);
+    return (
+        <div>Login
+
+
+        <form className={classes.container} noValidate autoComplete="off">
+            <TextField
+                id="standard-name"
+                label="Email"
+                className={classes.textField}
+                value={email}
+                onChange={(e)=> {setEmail(e.target.value)}}
+                margin="normal"
+            />
+
+            <TextField
+                id="standard-uncontrolled"
+                label="Uncontrolled"
+                defaultValue="foo"
+                value={password}
+                onChange={(e)=> {setPassword(e.target.value)}}
+                className={classes.textField}
+                margin="normal"
+            />
+
+ 
+        </form>
+        <Button variant="contained" 
+            className={classes.button}
+            onClick={ () => {window.location.href = window.location.origin + "/dining" }}>
+        Login
+      </Button></div>
+    );
 }
