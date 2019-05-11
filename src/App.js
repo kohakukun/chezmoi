@@ -1,12 +1,15 @@
 import React from 'react';
 import './App.css';
-import {TopNavBar} from './TopNavBar';
-import {AppDrawer} from './AppDrawer'
+import { TopNavBar } from './TopNavBar';
+import { AppDrawer } from './AppDrawer'
 import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import {Preview} from './Preview';
+import { Preview } from './Preview';
+import { LoginPage } from './LoginPage/LoginPage';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { RegisterUserPage } from './RegisterUserPage/RegisterUserPage';
 
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
@@ -44,10 +47,15 @@ const App = (props) => {
     setMobileOpen(!mobileOpen);
   }
 
+
+
+
+
+
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <TopNavBar handleDrawerToggle={handleDrawerToggle}/>
+      <TopNavBar handleDrawerToggle={handleDrawerToggle} />
       <nav className={classes.drawer}>
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
@@ -64,7 +72,7 @@ const App = (props) => {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-            <AppDrawer/>
+            <AppDrawer />
           </Drawer>
         </Hidden>
         <Hidden xsDown implementation="css">
@@ -75,13 +83,17 @@ const App = (props) => {
             variant="permanent"
             open
           >
-            <AppDrawer/>
+            <AppDrawer />
           </Drawer>
         </Hidden>
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Preview/>
+        <Router>
+          <Route path="/" component={Preview} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register-user" component={RegisterUserPage} />
+        </Router>
       </main>
     </div>
   );

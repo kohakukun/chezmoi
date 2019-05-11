@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { WebsocketStore } from './services/websocketStore';
+import {User} from './models/user';
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
 const theme = createMuiTheme({ typography: { useNextVariants: true } });
+const websocketStore = new WebsocketStore();
 
 
 ReactDOM.render(
