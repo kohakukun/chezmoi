@@ -3,6 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { WebsocketStore } from './services/websocketStore';
+import {User} from './models/user';
+
+
+const websocketStore = new WebsocketStore();
+
+
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
