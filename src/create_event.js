@@ -4,6 +4,8 @@ import { red } from '@material-ui/core/colors';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import Button from '@material-ui/core/Button';
+import PropTypes from 'prop-types';
 
 class LocationSwitch extends React.Component {
   state = {
@@ -119,7 +121,7 @@ class CreateEvent extends React.Component {
     return (
 
 
-      <div style={{ backgroundColor: 'grey' }}>
+      <div style={{ backgroundColor: 'white' }}>
         <TextField id="title" type="text" label="enter title" />
         <br />
         <TextField id="description" type="text" label="enter title" multiline="true" rows="5" />
@@ -129,6 +131,10 @@ class CreateEvent extends React.Component {
             </h1>
         <SwitchLabels />
         <LocationSwitch />
+				<br/>
+				<Button variant="contained">
+          Create event
+        </Button>
       </div>
     );
   }
