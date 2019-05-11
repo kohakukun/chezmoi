@@ -8,6 +8,7 @@ import Switch from '@material-ui/core/Switch';
 class LocationSwitch extends React.Component{
   state = {
     alternativeLocation: true,
+    // checked: false,
   };
 
   handleChange = event => {
@@ -32,9 +33,9 @@ class LocationSwitch extends React.Component{
     <FormControlLabel
           control={
             <Switch
-              checked={this.state.selectedValue === 'a'}
+              checked={this.state.alternativeLocation}
               onChange={this.handleChange}
-              value={false}
+              //value={this.state.alternativeLocation}
               color="primary"
             />
           }
@@ -66,7 +67,7 @@ class SwitchLabels extends React.Component {
        <FormControlLabel
           control={
             <Switch
-              checked={this.state.selectedValue === 'a'}
+              checked={this.state.alternativeLocation}
               onChange={this.handleChange}
               value="a"
               color="primary"
