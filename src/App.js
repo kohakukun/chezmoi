@@ -10,6 +10,8 @@ import {FoodEventCarousel} from './FoodEventCarousel';
 import { LoginPage } from './LoginPage/LoginPage';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { RegisterUserPage } from './RegisterUserPage/RegisterUserPage';
+//import CreateEvent from './create_event'
+//import ManageEvent from './manage_event' 
 
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
@@ -94,6 +96,8 @@ const App = (props) => {
           <Route path="/" component={FoodEventCarousel} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register-user" component={RegisterUserPage} />
+          {/* <Route path="/create-event" component={CreateEvent} />
+          <Route path="/manage-event" component={ManageEvent} /> */}
         </Router>
       </main>
     </div>

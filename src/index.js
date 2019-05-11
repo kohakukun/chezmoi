@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import CreateEvent from './create_event';
+import ManageEvent from './manage_event';
 import * as serviceWorker from './serviceWorker';
 import { WebsocketStore } from './services/websocketStore';
 import {User} from './models/user';
