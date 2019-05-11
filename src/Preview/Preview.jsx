@@ -1,6 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/styles';
 import {MenuThingy} from './MenuThingy';
+import SwipeableViews from 'react-swipeable-views';
+import fork from '../static/media/fork.svg';
+import knife from '../static/media/knife.svg';
+import { DetailView } from './DetailView';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -13,11 +18,19 @@ const useStyles = makeStyles(theme => ({
   title: {
     background: 'blue',
     flexGrow: '0.2',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'flex-end',
 
   },
-  plate: {
+  table: {
     background: 'green',
     flexGrow: '0.8',
+    display: 'flex',
+  },
+  plate: {
+    background: 'pink',
+    flexGrow: 1,
   },
   menu: {
     background: 'red',
@@ -28,23 +41,44 @@ const useStyles = makeStyles(theme => ({
     borderTopRightRadius: '9px',
     borderTopLeftRadius: '9px',
     padding: '9px',
+  },
+  slideContainer: {
+    height: '100%',
+  },
+  slide: {
+    minHeight: '986px'
   }
 }));
 
-export const Preview = ({price, tags}) => {
+export const Preview = ({price, tags, title}) => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <div className={classes.title}>
-        title
+    <SwipeableViews
+      containerStyle={{height: 986}}
+      slideClassName={classes.slide}
+      axis="y"
+      resistance
+      enableMouseEvents
+    >
+      <div className={classes.root}>
+        <div className={classes.title}>
+          {title}
+        </div>
+        <div className={classes.table}>
+          <img src={fork} alt="" />
+          <div className={classes.plate}>
+
+          </div>
+          <img src={knife} alt="" />
+        </div>
+        <MenuThingy
+          price={3}
+          tags={['vegan']}
+        />
       </div>
-      <div className={classes.plate}>
-        Plate
-      </div>
-      <MenuThingy price={3}
-      
-      tags={tags}/>
-    </div>
+      <DetailView/>
+    </SwipeableViews>
+
   );
 }
 
