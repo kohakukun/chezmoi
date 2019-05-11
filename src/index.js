@@ -12,7 +12,7 @@ const theme = createMuiTheme({ typography: { useNextVariants: true } });
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <App />
+    <CreateEvent />
   </ThemeProvider>,
   document.getElementById('root'));
 
