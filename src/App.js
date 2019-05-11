@@ -10,6 +10,7 @@ import {FoodEventCarousel} from './FoodEventCarousel';
 import { LoginPage } from './LoginPage/LoginPage';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { RegisterUserPage } from './RegisterUserPage/RegisterUserPage';
+import { Preview } from './Preview';
 
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
@@ -91,7 +92,6 @@ const App = (props) => {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Router>
-          <Route path="/" component={FoodEventCarousel} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register-user" component={RegisterUserPage} />
           <Route path="/dining" component={Preview} />
