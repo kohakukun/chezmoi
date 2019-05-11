@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import CreateEvent from './create_event';
 import * as serviceWorker from './serviceWorker';
 import { WebsocketStore } from './services/websocketStore';
 import {User} from './models/user';
@@ -22,3 +23,8 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+//create new js file
+//implement class
+//here load our file instea of App
+//material ui form
