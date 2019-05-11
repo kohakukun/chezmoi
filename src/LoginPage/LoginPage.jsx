@@ -7,6 +7,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+
 const useStyles = makeStyles(theme => ({
     formWrapper: {
         display: 'flex',
@@ -25,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 }));
 
-export const LoginPage = () => {
+export const LoginPage = ({setIsLoggedInState}) => {
 
 
     const [email, setEmail] = useState("");
@@ -62,7 +63,10 @@ export const LoginPage = () => {
             </form>
             <Button variant="contained"
                 className={classes.button}
-                onClick={() => { window.location.href = window.location.origin + "/dining" }}>Login
+                onClick={() => { 
+                    localStorage.setItem("isLoggedIn", "true");
+                    window.location.href = window.location.origin + "/dining";
+                 }}>Login
             </Button>
         </div>
     );
