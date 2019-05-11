@@ -5,122 +5,130 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
-class LocationSwitch extends React.Component{
-  state = {
-    alternativeLocation: true,
-    // checked: false,
-  };
+class LocationSwitch extends React.Component {
+	state = {
+		alternativeLocation: true,
+		// checked: false,
+	};
 
-  handleChange = event => {
-    this.setState(prevState => ({
-      alternativeLocation: !prevState.alternativeLocation
-    }));
-    }
+	handleChange = event => {
+		this.setState(prevState => ({
+			alternativeLocation: !prevState.alternativeLocation
+		}));
+	}
 
-  render(){
-    let alternativeLocation_field;
+	render() {
+		let alternativeLocation_field;
 
-    if (this.state.alternativeLocation)
-    {
-      alternativeLocation_field = <TextField/>
-    }
-    else{
-      alternativeLocation_field = null;
-    }
-    
-    return(
-    <FormGroup row>
-    <FormControlLabel
-          control={
-            <Switch
-              checked={this.state.alternativeLocation}
-              onChange={this.handleChange}
-              //value={this.state.alternativeLocation}
-              color="primary"
-            />
-          }
-          label="Alternative Location"
-        />
-        <br/>
-        {alternativeLocation_field}
-    </FormGroup>
-  )}
+		if (this.state.alternativeLocation) {
+			alternativeLocation_field =
+				<div>
+					<TextField id="name" type="text" label="Name" />
+					<br />
+					<TextField id="adress" type="text" label="Adress" />
+					<br />
+					<TextField id="zip" type="text" label="ZIP code" />
+				</div>
+		}
+		else {
+			alternativeLocation_field = null;
+		}
+
+		return (
+			<FormGroup row>
+				<FormControlLabel
+					control={
+						<Switch
+							checked={this.state.alternativeLocation}
+							onChange={this.handleChange}
+							//value={this.state.alternativeLocation}
+							color="primary"
+						/>
+					}
+					label="Alternative Location"
+				/>
+				<br />
+				{alternativeLocation_field}
+			</FormGroup>
+		)
+	}
 }
 
 
 
 class SwitchLabels extends React.Component {
-  state = {
-    selectedValue: 'a',
-};
+	state = {
+		selectedValue: 'a',
+	};
 
 
-  handleChange = event => {
-    this.setState({ 
-        selectedValue: event.target.value});
-  };
+	handleChange = event => {
+		this.setState({
+			selectedValue: event.target.value
+		});
+	};
 
-  render() {
-    return (
-      <FormGroup row>
-       
-       <FormControlLabel
-          control={
-            <Switch
-              checked={this.state.alternativeLocation}
-              onChange={this.handleChange}
-              value="a"
-              color="primary"
-            />
-          }
-          label="Vegetarian"
-        />
-        <FormControlLabel
-          control={
-            <Switch
-              checked={this.state.selectedValue === 'b'}
-              onChange={this.handleChange}
-              value="b"
-              color="primary"
-            />
-          }
-          label="Vegan"
-        />
-        <FormControlLabel
-          control={
-            <Switch
-              checked={this.state.selectedValue === 'c'}
-              onChange={this.handleChange}
-              value="c"
-              color="primary"
-            />
-          }
-          label="FLEISCH!!!!"
-        /> 
-      </FormGroup>
-    );
-  }
+	render() {
+		return (
+			<FormGroup row>
+
+				<FormControlLabel
+					control={
+						<Switch
+							checked={this.state.alternativeLocation}
+							onChange={this.handleChange}
+							value="a"
+							color="primary"
+						/>
+					}
+					label="Vegetarian"
+				/>
+				<FormControlLabel
+					control={
+						<Switch
+							checked={this.state.selectedValue === 'b'}
+							onChange={this.handleChange}
+							value="b"
+							color="primary"
+						/>
+					}
+					label="Vegan"
+				/>
+				<FormControlLabel
+					control={
+						<Switch
+							checked={this.state.selectedValue === 'c'}
+							onChange={this.handleChange}
+							value="c"
+							color="primary"
+						/>
+					}
+					label="FLEISCH!!!!"
+				/>
+			</FormGroup>
+		);
+	}
 }
 
 
 class CreateEvent extends React.Component {
-    render() {
-        return (
+	render() {
+		return (
 
-        
-        <div style={{backgroundColor:'grey'}}>
-            <TextField id="title" type="text" label="enter title" />
-            <br/>
-            <TextField id="description" type="text" label="enter title" multiline="true" rows="5" />
-            <br/>
-            <h1>
-                Details:
+
+			<div style={{ backgroundColor: 'grey' }}>
+				<TextField id="title" type="text" label="enter title" />
+				<br />
+				<TextField id="description" type="text" label="enter title" multiline="true" rows="5" />
+				<br />
+				<h1>
+					Details:
             </h1>
-            <SwitchLabels/>    
-            <LocationSwitch/>
-        </div>
-        );
-    }
+				<SwitchLabels />
+				<LocationSwitch />
+			</div>
+		);
+	}
 }
 
 
