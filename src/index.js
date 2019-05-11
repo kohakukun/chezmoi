@@ -15,7 +15,7 @@ const websocketStore = new WebsocketStore();
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <CreateEvent />
+    <App />
   </ThemeProvider>,
   document.getElementById('root'));
 
