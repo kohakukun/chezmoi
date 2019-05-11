@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import CreateEvent from './create_event';
 
 function App() {
   return (
@@ -17,9 +18,12 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
+
+
         </a>
       </header>
     </div>
+
   );
 }
 
