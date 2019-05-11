@@ -9,11 +9,42 @@ import HistoryIcon from '@material-ui/icons/History';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import SignOutIcon from '@material-ui/icons/ExitToApp';
-
+import { LoginPage } from '../LoginPage/LoginPage';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
 }));
+
+
+  // Routing
+  function AppRouter() {
+    return (
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Dining</Link>
+              </li>
+              <li>
+                <Link to="/about/">History</Link>
+              </li>
+              <li>
+                <Link to="/users/">Settings</Link>
+              </li>
+            </ul>
+          </nav>
+  
+          {/* <Route path="/" exact component={Index} />
+          <Route path="/history/" component={About} />
+          <Route path="/settings/" component={Users} /> */}
+          <Route path="/login" component={LoginPage} />
+        </div>
+      </Router>
+    );
+  }
+
 
 function pickIcons(context) {
   switch (context) {
