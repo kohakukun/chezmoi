@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     width: drawerWidth,
   },
   content: {
-    flexGrow: 1,
+    flexGrow: 1
   },
 }));
 
@@ -49,11 +49,6 @@ const App = (props) => {
   function handleDrawerToggle() {
     setMobileOpen(!mobileOpen);
   }
-
-
-
-
-
 
   return (
     <Router>
@@ -91,14 +86,11 @@ const App = (props) => {
           </Drawer>
         </Hidden>
       </nav>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        
+      <main className={classes.content}>        
           <Route path="/login" component={LoginPage} />
           <Route path="/register-user" component={RegisterUserPage} />
           <Route path="/dining" component={Preview} />
           <Route path="/create-event" component={CreateEvent} />
-    
       </main>
     </div>
     </Router>
