@@ -78,7 +78,7 @@ class SwitchLabels extends React.Component {
         <FormControlLabel
           control={
             <Switch
-              checked={this.state.alternativeLocation}
+              checked={this.state.selectedValue === 'a'}
               onChange={this.handleChange}
               value="a"
               color="primary"
