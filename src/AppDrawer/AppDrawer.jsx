@@ -17,33 +17,29 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
-  // Routing
-  function AppRouter() {
-    return (
-      <Router>
-        <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">Dining</Link>
-              </li>
-              <li>
-                <Link to="/about/">History</Link>
-              </li>
-              <li>
-                <Link to="/users/">Settings</Link>
-              </li>
-            </ul>
-          </nav>
-  
-          {/* <Route path="/" exact component={Index} />
-          <Route path="/history/" component={About} />
-          <Route path="/settings/" component={Users} /> */}
-          <Route path="/login" component={LoginPage} />
-        </div>
-      </Router>
-    );
-  }
+// Routing
+function AppRouter() {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/dining">Dining</Link>
+            </li>
+            <li>
+              <Link to="//">History</Link>
+            </li>
+            <li>
+              <Link to="/users/">Settings</Link>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+    </Router>
+  );
+}
 
 
 function pickIcons(context) {
@@ -66,28 +62,32 @@ export const AppDrawer = (selectEvent) => {
     <div>
       <div className={classes.toolbar} />
       <Divider />
-      <List>
-        {['Dining', 'History', 'Settings'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{
+        <List>
+          {['Dining', 'History', 'Settings'].map((text, index) => (
+            <ListItem button key={text}
+            component={Link} to={'/'+text.toLowerCase()}>
+              <ListItemIcon>
+                {
+                  pickIcons(text)
+                }</ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
 
-              pickIcons(text)
-            }</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['Logout'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>
-              <SignOutIcon />
-            </ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+        <Divider />
+        <List>
+          {['Logout'].map((text, index) => (
+            <ListItem button key={text}
+            component={Link} to="/login"
+              >
+              <ListItemIcon>
+                <SignOutIcon />
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItem>
+          ))}
+        </List>
     </div>
   );
 };

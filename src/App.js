@@ -11,6 +11,7 @@ import { LoginPage } from './LoginPage/LoginPage';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { RegisterUserPage } from './RegisterUserPage/RegisterUserPage';
 import { Preview } from './Preview';
+import CreateEvent from './create_event';
 
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
@@ -55,6 +56,7 @@ const App = (props) => {
 
 
   return (
+    <Router>
     <div className={classes.root}>
       <CssBaseline />
       <TopNavBar handleDrawerToggle={handleDrawerToggle} />
@@ -91,14 +93,15 @@ const App = (props) => {
       </nav>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Router>
+        
           <Route path="/login" component={LoginPage} />
           <Route path="/register-user" component={RegisterUserPage} />
           <Route path="/dining" component={Preview} />
-        </Router>
+          <Route path="/create-event" component={CreateEvent} />
+    
       </main>
     </div>
-
+    </Router>
   );
 }
 
