@@ -4,6 +4,7 @@ import MoneyIcon from '@material-ui/icons/AttachMoney';
 import MoneyOffIcon from '@material-ui/icons/MoneyOff';
 import {foodTags } from './constants';
 
+
 const useStyles = makeStyles(theme => ({
   menu: {
     background: 'red',
@@ -22,13 +23,13 @@ const useStyles = makeStyles(theme => ({
 export const MenuThingy = ({price, tags}) => {
   const priceContent = [];
   for (let i = 0; i < price; i++) {
-    priceContent.push(<MoneyIcon/>);
+    priceContent.push(<MoneyIcon key={i}/>);
   }
   const classes = useStyles();
   return (
     <div className={classes.menu}>
       <div>
-        {tags.map((tag)=> foodTags(tag))}
+        {tags.map((tag)=> (foodTags[tag]({key: tag})))}
       </div>
       <div>
       {priceContent.length ? priceContent : <MoneyOffIcon/>}

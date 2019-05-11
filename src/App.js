@@ -6,7 +6,7 @@ import Hidden from '@material-ui/core/Hidden';
 import Drawer from '@material-ui/core/Drawer';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { Preview } from './Preview';
+import {FoodEventCarousel} from './FoodEventCarousel';
 import { LoginPage } from './LoginPage/LoginPage';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { RegisterUserPage } from './RegisterUserPage/RegisterUserPage';
@@ -36,6 +36,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
   },
 }));
+
 
 const App = (props) => {
   const { container } = props;
@@ -90,7 +91,7 @@ const App = (props) => {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Router>
-          <Route path="/" component={Preview} />
+          <Route path="/" component={FoodEventCarousel} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register-user" component={RegisterUserPage} />
         </Router>
