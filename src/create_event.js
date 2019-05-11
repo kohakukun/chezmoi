@@ -5,6 +5,49 @@ import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 
+class LocationSwitch extends React.Component{
+  state = {
+    alternativeLocation: true,
+  };
+
+  handleChange = event => {
+    this.setState(prevState => ({
+      alternativeLocation: !prevState.alternativeLocation
+    }));
+    }
+
+  render(){
+    let alternativeLocation_field;
+
+    if (this.state.alternativeLocation)
+    {
+      alternativeLocation_field = <TextField/>
+    }
+    else{
+      alternativeLocation_field = null;
+    }
+    
+    return(
+    <FormGroup row>
+    <FormControlLabel
+          control={
+            <Switch
+              checked={this.state.selectedValue === 'a'}
+              onChange={this.handleChange}
+              value={false}
+              color="primary"
+            />
+          }
+          label="Alternative Location"
+        />
+        <br/>
+        {alternativeLocation_field}
+    </FormGroup>
+  )}
+}
+
+
+
 class SwitchLabels extends React.Component {
   state = {
     selectedValue: 'a',
@@ -53,7 +96,6 @@ class SwitchLabels extends React.Component {
           }
           label="FLEISCH!!!!"
         /> 
-
       </FormGroup>
     );
   }
@@ -63,6 +105,7 @@ class SwitchLabels extends React.Component {
 class CreateEvent extends React.Component {
     render() {
         return (
+
         
         <div style={{backgroundColor:'grey'}}>
             <TextField id="title" type="text" label="enter title" />
@@ -73,7 +116,7 @@ class CreateEvent extends React.Component {
                 Details:
             </h1>
             <SwitchLabels/>    
-
+            <LocationSwitch/>
         </div>
         );
     }
