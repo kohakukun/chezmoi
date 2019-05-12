@@ -10,42 +10,36 @@ import autoPlay from 'react-swipeable-views-utils/lib/autoPlay';
 
 const useStyles = makeStyles(theme => ({
   table: {
-    background: 'green',
+    // background: 'green',
     flexGrow: '1',
     display: 'flex',
-  },
-  plate: {
-    position: 'relative',
   },
 
   rim: {
     position: 'absolute',
-    width: '360px',
+    width: '100%',
     zIndex: '2'
   },
 
   inner: {
     position: 'absolute',
-    width: '360px',
+    width: '100%',
     zIndex: '0'
   },
 
   food: {
     position: 'absolute',
-    width: '360px',
+    width: '100%',
     zIndex: '1'
   },
 
   cloth: {
     position: 'absolute',
-    width: '360px',
+    width: '100%',
   },
 
-  knife_asd:
+  cutlery:
   {
-    height: '360px',
-  },
-  spoon_asd: {
     height: '360px',
   }
 }));
@@ -69,14 +63,14 @@ export const Table = ({ img }) => {
     layout =
       <div style={{ height: 360 }}>
         <div className={classes.table}>
-          <img className={classes.spoon_asd} src={spoon} alt="" />
+          <img className={classes.cutlery} src={spoon} alt="" />
           <div className={classes.table}>
             <img className={classes.rim} src={rim} alt="" />
             <img className={classes.inner} src={inner} alt="" />
             <img className={classes.cloth} src={cloth} alt="" />
             <img className={classes.food} src={food} alt="" />
           </div>
-          <img className={classes.knife_asd} src={knife} alt="" />
+          <img className={classes.cutlery} src={knife} alt="" />
         </div>
       </div>
   }
