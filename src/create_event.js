@@ -114,12 +114,12 @@ class SwitchLabels extends React.Component {
 }
 
 
-class CreateEvent extends React.Component {
+export class CreateEvent extends React.Component {
   render() {
     return (
 
 
-      <div style={{ backgroundColor: 'white' }}>
+      <div style={{ backgroundColor: 'white', padding:'9px' }}>
         <TextField id="title" type="text" label="enter title" />
         <br />
         <TextField id="description" type="text" label="enter title" multiline="true" rows="5" />
@@ -137,7 +137,3 @@ class CreateEvent extends React.Component {
     );
   }
 }
-
-
-
-export default CreateEvent;

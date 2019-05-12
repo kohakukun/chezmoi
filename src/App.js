@@ -8,6 +8,7 @@ import './App.css';
 import { AppDrawer } from './AppDrawer';
 import { LoginPage } from './LoginPage/LoginPage';
 import { Preview } from './Preview';
+import { CreateEvent } from './create_event';
 import { FoodEventCarousel } from './FoodEventCarousel';
 import { RegisterUserPage } from './RegisterUserPage/RegisterUserPage';
 import { TopNavBar } from './TopNavBar';
@@ -83,6 +84,7 @@ const App = (props) => {
         }} />
         <Route path="/login" component={LoginPage} />
         <Route path="/register-user" component={RegisterUserPage} />
+        <Route path="/create-event" component={CreateEvent} />
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
-import fork from '../static/media/fork.svg';
-import knife from '../static/media/knife.svg';
+import fork from '../static/media/Spoon.svg';
+import knife from '../static/media/Knife.svg';
+import plate from '../static/media/Rim.svg';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(theme => ({
