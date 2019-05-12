@@ -48,7 +48,6 @@ export const LoginPage = ({setIsLoggedInState}) => {
                 <TextField
                     id="standard-uncontrolled"
                     label="Uncontrolled"
-                    defaultValue="foo"
                     value={password}
                     onChange={(e) => { setPassword(e.target.value) }}
                     className={classes.textField}
@@ -61,7 +60,7 @@ export const LoginPage = ({setIsLoggedInState}) => {
                 className={classes.button}
                 onClick={() => { 
                     localStorage.setItem("isLoggedIn", "true");
-                    window.location.href = window.location.origin + "/dining";
+                    window.location.href = window.location.origin + "/dining?userId="+email;
                  }}>Login
             </Button>
         </div>

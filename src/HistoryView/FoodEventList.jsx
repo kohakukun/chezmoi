@@ -3,7 +3,6 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
 import {PriceIndicator} from '../PriceIndicator';
 import {Rating} from '../Rating';
@@ -29,8 +28,8 @@ export const FoodEventList = ({foodEvents}) => {
   const classes = useStyles();
   return (
     <List className={classes.root}>
-      {foodEvents.map((foodEvent)=> {
-        return <ListItem alignItems="flex-start">
+      {foodEvents.map((foodEvent, index)=> {
+        return <ListItem alignItems="flex-start" key={index}>
           <ListItemAvatar>
             <Avatar alt="Remy Sharp" src={foodEvent.image} />
           </ListItemAvatar>
@@ -38,9 +37,9 @@ export const FoodEventList = ({foodEvents}) => {
             primary={foodEvent.title}
             secondary={
               <div className={classes.inner}>
-                <Rating rating={foodEvent.foodRating} classes={{fontSizeSmall: classes.icons}} fontSize={'small'}/>
+                <Rating key={'rating'} rating={foodEvent.foodRating} classes={{fontSizeSmall: classes.icons}} fontSize={'small'}/>
                 -
-                <PriceIndicator price={foodEvent.price} classes={{fontSizeSmall: classes.icons}} fontSize={'small'}/>
+                <PriceIndicator key={'price'}  price={foodEvent.price} classes={{fontSizeSmall: classes.icons}} fontSize={'small'}/>
               </div>
             }
           />

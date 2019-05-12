@@ -1,17 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/styles';
-import {MenuThingy} from './MenuThingy';
 import SwipeableViews from 'react-swipeable-views';
-import {Table} from '../Table';
-import {Preview} from './Preview';
 import { DetailView } from './DetailView';
+import { Preview } from './Preview';
 
-
-const useStyles = makeStyles(theme => ({
-}));
-
-export const SwipeablePreview = ({price, tags, title, height}) => {
-  const classes = useStyles();
+export const SwipeablePreview = ({height, ...restProps}) => {
   return (
     <SwipeableViews
       containerStyle={{height}}
@@ -20,8 +12,8 @@ export const SwipeablePreview = ({price, tags, title, height}) => {
       enableMouseEvents      
       slideStyle={{height}}
     >
-      <Preview/>
-      <DetailView/>
+      <Preview {...restProps}/>
+      <DetailView {...restProps}/>
     </SwipeableViews>
 
   );
