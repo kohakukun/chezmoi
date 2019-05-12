@@ -6,13 +6,16 @@ import {foodTags } from './constants';
 
 const useStyles = makeStyles(theme => ({
   menu: {
-    background: theme.palette.primary.main,
+    background: theme.palette.background.paper,
     maxHeight: '50px',
     width: '80%',
     minHeight: '50px',
     alignSelf: 'center',
-    borderTopRightRadius: '9px',
-    borderTopLeftRadius: '9px',
+    borderTopRightRadius: '12px',
+    borderTopLeftRadius: '12px',
+    borderColor: '#cecece',
+    border: 'solid',
+    borderBottom: 'none',
     padding: '9px',
     display: 'flex',
     justifyContent: 'space-between'

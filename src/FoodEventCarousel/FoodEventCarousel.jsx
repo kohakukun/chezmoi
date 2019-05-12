@@ -9,6 +9,9 @@ const VirtualizeSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
 export const FoodEventCarousel = ({foodEvents, width, height}) => {
   const [index, setIndex] = useState(0);
+  const increaseIndex = () => {
+    setIndex((index < foodEvents.length - 1) ? index + 1 : 0);
+  };
   return (
     <VirtualizeSwipeableViews
         containerStyle={{height}}
@@ -16,7 +19,20 @@ export const FoodEventCarousel = ({foodEvents, width, height}) => {
         index={index}
         onChangeIndex={(index)=>{setIndex(index)}}
         slideRenderer={({index, key})=> {
-          return <Preview width={width} height={height} key={key} {...foodEvents[index]}/>
+          return <Preview
+            width={width}
+            height={height}
+            handleReject={()=>{
+              alert('rejected');
+              increaseIndex();
+            }}
+            handleAccept={()=>{
+              alert('accepted');
+              increaseIndex();
+            }}
+            key={key}
+            {...foodEvents[index]}
+          />
         }}
         enableMouseEvents
         height={height}

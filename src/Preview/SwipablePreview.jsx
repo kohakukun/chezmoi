@@ -1,6 +1,6 @@
 import React from 'react';
 import SwipeableViews from 'react-swipeable-views';
-import { DetailView } from './DetailView';
+import {FoodEventCard} from '../FoodEventCard';
 import { Preview } from './Preview';
 
 export const SwipeablePreview = ({height, ...restProps}) => {
@@ -13,7 +13,7 @@ export const SwipeablePreview = ({height, ...restProps}) => {
       slideStyle={{height}}
     >
       <Preview {...restProps}/>
-      <DetailView {...restProps}/>
+      <FoodEventCard event={{...restProps}}/>
     </SwipeableViews>
 
   );

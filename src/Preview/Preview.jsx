@@ -3,6 +3,9 @@ import React from 'react';
 import { Table } from '../Table';
 import { MenuThingy } from './MenuThingy';
 import Typography from '@material-ui/core/Typography';
+import CheckIcon from '@material-ui/icons/Check';
+import CloseIcon from '@material-ui/icons/Close';
+import IconButton from '@material-ui/core/IconButton';
 
 
 const useStyles = makeStyles(theme => ({
@@ -19,11 +22,15 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-end',
-
+  },
+  actions: {
+    flexGrow: '1',
+    display: 'flex',
+    justifyContent: 'center'
   }
 }));
 
-export const Preview = ({price, tags, title, height}) => {
+export const Preview = ({price, tags, title, height, handleReject, handleAccept}) => {
   const classes = useStyles();
   return (
       <div className={classes.root}>
@@ -33,6 +40,14 @@ export const Preview = ({price, tags, title, height}) => {
           </Typography>
         </div>
         <Table/>
+        <div className={classes.actions}>
+          <IconButton onClick={handleAccept}>
+            <CheckIcon fontSize={'large'}/>
+          </IconButton>
+          <IconButton onClick={handleReject}>
+            <CloseIcon fontSize={'large'}/>
+          </IconButton>
+        </div>
         <MenuThingy
           price={price}
           tags={tags}

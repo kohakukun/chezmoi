@@ -1,13 +1,7 @@
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/styles';
 import React from 'react';
-import pizza from '../static/media/Pizza.png';
+import { FoodEventCard } from '../FoodEventCard';
 import { AttendeesItem } from './AttendeesItem';
 
 const useStyles = makeStyles(theme => ({
@@ -35,35 +29,14 @@ const useStyles = makeStyles(theme => ({
 
 export const ManageView = ({attendees, event}) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = React.useState(false);
-
-  function handleExpandClick() {
-    setExpanded(!expanded);
-  }
-
   return (
-    <Card className={classes.card}>
-      <CardHeader
-        title={event.title}
-        subheader="September 14, 2016"
-      />
-      <CardMedia
-        className={classes.media}
-        image={pizza}
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography component="p">
-          {event.description}
-        </Typography>
-        <Divider/>
-        <List className={classes.root}>
+    <FoodEventCard event={event}>
+      <List className={classes.root}>
         {attendees.map((foodEvent, index)=> {
           return <AttendeesItem key={index} foodEvent={{...foodEvent}}/>
         })}
-    </List>
-      </CardContent>
-    </Card>
+      </List>
+    </FoodEventCard>
   );
 }
 

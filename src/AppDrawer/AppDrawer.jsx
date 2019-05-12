@@ -6,6 +6,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import SignOutIcon from '@material-ui/icons/ExitToApp';
 import HistoryIcon from '@material-ui/icons/History';
 import DiningIcon from '@material-ui/icons/LocalDining';
+import GroupIcon from '@material-ui/icons/Group';
+import EditIcon from '@material-ui/icons/Edit';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { makeStyles } from '@material-ui/styles';
 import React from 'react';
@@ -17,6 +19,10 @@ const useStyles = makeStyles(theme => ({
 
 function pickIcons(context) {
   switch (context) {
+    case "Create Event":
+      return <EditIcon />;
+    case "Manage":
+      return <GroupIcon />;
     case "Dining":
       return <DiningIcon />;
     case "History":
@@ -38,7 +44,7 @@ export const AppDrawer = (selectEvent) => {
         <List>
           {['Dining', 'History', 'Settings', 'Manage', 'Create Event'].map((text, index) => (
             <ListItem button key={text}
-            component={Link} to={'/'+text.replace(/\ /g, '-').toLowerCase()}>
+            component={Link} to={'/'+text.replace(/ /g, '-').toLowerCase()}>
               <ListItemIcon>
                 {
                   pickIcons(text)
