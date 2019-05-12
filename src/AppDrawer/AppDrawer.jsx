@@ -36,9 +36,9 @@ export const AppDrawer = (selectEvent) => {
       <div className={classes.toolbar} />
       <Divider />
         <List>
-          {['Dining', 'History', 'Settings', 'Manage'].map((text, index) => (
+          {['Dining', 'History', 'Settings', 'Manage', 'Create Event'].map((text, index) => (
             <ListItem button key={text}
-            component={Link} to={'/'+text.toLowerCase()}>
+            component={Link} to={'/'+text.replace(/\ /g, '-').toLowerCase()}>
               <ListItemIcon>
                 {
                   pickIcons(text)
