@@ -1,10 +1,8 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import {MenuThingy} from './MenuThingy';
-import SwipeableViews from 'react-swipeable-views';
-import {Table} from '../Table';
-
-import { DetailView } from './DetailView';
+import React from 'react';
+import { Table } from '../Table';
+import { MenuThingy } from './MenuThingy';
+import Typography from '@material-ui/core/Typography';
 
 
 const useStyles = makeStyles(theme => ({
@@ -16,8 +14,8 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center'
   },
   title: {
-    background: 'blue',
-    flexGrow: '0.2',
+    background: theme.palette.background.paper,
+    flexGrow: '0',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-end',
@@ -30,12 +28,14 @@ export const Preview = ({price, tags, title, height}) => {
   return (
       <div className={classes.root}>
         <div className={classes.title}>
-          {title}
+          <Typography variant="h5" color="inherit" noWrap>
+            {title}
+          </Typography>
         </div>
         <Table/>
         <MenuThingy
-          price={3}
-          tags={['vegan']}
+          price={price}
+          tags={tags}
         />
       </div>
   );

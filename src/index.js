@@ -2,13 +2,10 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from "react-router-dom";
 import App from './App';
 import './index.css';
-import { WebsocketStore } from './services/websocketStore';
 import * as serviceWorker from './serviceWorker';
-import {Preview} from './Preview';
-import ContainerDimensions from 'react-container-dimensions';
-import { BrowserRouter as Router } from "react-router-dom";
 
 const theme = createMuiTheme({ typography: { useNextVariants: true } });
 
