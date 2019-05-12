@@ -1,1 +1,1 @@
-export * from './Preview';
+export {SwipeablePreview as Preview} from './SwipablePreview';

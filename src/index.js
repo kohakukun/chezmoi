@@ -6,13 +6,18 @@ import App from './App';
 import './index.css';
 import { WebsocketStore } from './services/websocketStore';
 import * as serviceWorker from './serviceWorker';
+import {Preview} from './Preview';
+import ContainerDimensions from 'react-container-dimensions';
+import { BrowserRouter as Router } from "react-router-dom";
 
 const theme = createMuiTheme({ typography: { useNextVariants: true } });
 
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <App />
+    <Router>
+      <App/>
+    </Router>
   </ThemeProvider>,
   document.getElementById('root'));
 
