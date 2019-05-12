@@ -1,25 +1,27 @@
-import React from 'react';
-import './App.css';
-import { TopNavBar } from './TopNavBar';
-import { AppDrawer } from './AppDrawer'
-import Hidden from '@material-ui/core/Hidden';
-import Drawer from '@material-ui/core/Drawer';
-import { makeStyles, useTheme } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import Drawer from '@material-ui/core/Drawer';
+import { makeStyles } from '@material-ui/styles';
+import React from 'react';
+import ContainerDimensions from 'react-container-dimensions';
+import { Route } from "react-router-dom";
+import './App.css';
+import { AppDrawer } from './AppDrawer';
+import { CreateEvent } from './CreateEvent';
+import { ManageView } from './ManageView';
 import { FoodEventCarousel } from './FoodEventCarousel';
 import { LoginPage } from './LoginPage/LoginPage';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { RegisterUserPage } from './RegisterUserPage/RegisterUserPage';
-//import CreateEvent from './create_event'
-//import ManageEvent from './manage_event' 
-import { Preview } from './Preview';
-import CreateEvent from './create_event';
+import { TopNavBar } from './TopNavBar';
+import { HistoryView } from './HistoryView';
 
 const drawerWidth = 240;
+const foodEventsStr = localStorage.getItem('events');
+const foodEvents = foodEventsStr ? JSON.parse(foodEventsStr) : [];
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     height: '100%',
+    flexDirection: 'column'
   },
   drawer: {
     [theme.breakpoints.up('sm')]: {
@@ -37,67 +39,58 @@ const useStyles = makeStyles(theme => ({
     width: drawerWidth,
   },
   content: {
-    flexGrow: 1
+    flexGrow: 1,
   },
 }));
 
 
 const App = (props) => {
   const { container } = props;
-  const classes = useStyles();
-  const theme = useTheme();
+  const classes = useStyles();  
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [isLoggedInState, setIsLoggedInState] = React.useState(JSON.parse(localStorage.getItem("isLoggedIn")));
 
   function handleDrawerToggle() {
     setMobileOpen(!mobileOpen);
   }
 
   return (
-    <Router>
-      <div className={classes.root}>
-        <CssBaseline />
-        {isLoggedInState ? <TopNavBar handleDrawerToggle={handleDrawerToggle} /> : null}
-        {isLoggedInState ?
-          <nav className={classes.drawer}>
-            {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
-            <Hidden smUp implementation="css">
-              <Drawer
-                container={container}
-                variant="temporary"
-                anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                open={mobileOpen}
-                onClose={handleDrawerToggle}
-                classes={{
-                  paper: classes.drawerPaper,
+    <div className={classes.root}>
+      <CssBaseline />
+      <TopNavBar handleDrawerToggle={handleDrawerToggle} />
+      <Drawer
+        container={container}
+        variant="temporary"
+        open={mobileOpen}
+        onClose={handleDrawerToggle}
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+        ModalProps={{
+          keepMounted: true, // Better open performance on mobile.
+        }}
+      >
+        <AppDrawer />
+      </Drawer>
+      <div className={classes.content}>
+        <div className={classes.toolbar} />
+        <Route path="/dining" component={()=> {
+          return (
+            <div style={{width: '100%', height: '100%'}}>
+              <ContainerDimensions>
+                {({width, height})=>{
+                  return <FoodEventCarousel width={width} height={height||584} foodEvents={foodEvents}/>
                 }}
-                ModalProps={{
-                  keepMounted: true, // Better open performance on mobile.
-                }}
-              >
-                <AppDrawer />
-              </Drawer>
-            </Hidden>
-            <Hidden xsDown implementation="css">
-              <Drawer
-                classes={{
-                  paper: classes.drawerPaper,
-                }}
-                variant="permanent"
-                open
-              >
-                <AppDrawer />
-              </Drawer>
-            </Hidden>
-          </nav> : null}
-        <main className={classes.content}>
-          <Route path="/login" component={() => { return <LoginPage setIsLoggedInState={setIsLoggedInState} /> }} />
-          <Route path="/register-user" component={RegisterUserPage} />
-          <Route path="/dining" component={Preview} />
-          <Route path="/create-event" component={CreateEvent} />
-        </main>
+              </ContainerDimensions>
+            </div>
+          );
+        }} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/register-user" component={RegisterUserPage} />
+        <Route path="/create-event" component={CreateEvent} />
+        <Route path="/history" component={HistoryView} />
+        <Route path="/manage" component={ManageView} />
       </div>
-    </Router>
+    </div>
   );
 }
 

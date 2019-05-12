@@ -1,11 +1,7 @@
-import React, { useState } from 'react';
-import { makeStyles } from "@material-ui/styles";
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from "@material-ui/styles";
+import React, { useState } from 'react';
 
 
 const useStyles = makeStyles(theme => ({
@@ -52,7 +48,6 @@ export const LoginPage = ({setIsLoggedInState}) => {
                 <TextField
                     id="standard-uncontrolled"
                     label="Uncontrolled"
-                    defaultValue="foo"
                     value={password}
                     onChange={(e) => { setPassword(e.target.value) }}
                     className={classes.textField}
@@ -65,7 +60,7 @@ export const LoginPage = ({setIsLoggedInState}) => {
                 className={classes.button}
                 onClick={() => { 
                     localStorage.setItem("isLoggedIn", "true");
-                    window.location.href = window.location.origin + "/dining";
+                    window.location.href = window.location.origin + "/dining?userId="+email;
                  }}>Login
             </Button>
         </div>

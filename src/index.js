@@ -1,22 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import CreateEvent from './create_event';
-import ManageEvent from './manage_event';
-import * as serviceWorker from './serviceWorker';
-import { WebsocketStore } from './services/websocketStore';
-import {User} from './models/user';
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from "react-router-dom";
+import App from './App';
+import './index.css';
+import * as serviceWorker from './serviceWorker';
 
 const theme = createMuiTheme({ typography: { useNextVariants: true } });
-const websocketStore = new WebsocketStore();
 
 
 ReactDOM.render(
   <ThemeProvider theme={theme}>
-    <App />
+    <Router>
+      <App/>
+    </Router>
   </ThemeProvider>,
   document.getElementById('root'));
 

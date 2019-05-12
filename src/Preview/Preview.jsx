@@ -1,10 +1,8 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/styles';
-import {MenuThingy} from './MenuThingy';
-import SwipeableViews from 'react-swipeable-views';
-import fork from '../static/media/fork.svg';
-import knife from '../static/media/knife.svg';
-import { DetailView } from './DetailView';
+import React from 'react';
+import { Table } from '../Table';
+import { MenuThingy } from './MenuThingy';
+import Typography from '@material-ui/core/Typography';
 
 
 const useStyles = makeStyles(theme => ({
@@ -16,73 +14,36 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center'
   },
   title: {
-    background: 'blue',
-    flexGrow: '0.2',
+    background: theme.palette.background.paper,
+    flexGrow: '0',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-end',
 
-  },
-  table: {
-    background: 'green',
-    flexGrow: '0.8',
-    display: 'flex',
-  },
-  plate: {
-    background: 'pink',
-    flexGrow: 1,
-  },
-  menu: {
-    background: 'red',
-    maxHeight: '50px',
-    width: '80%',
-    minHeight: '50px',
-    alignSelf: 'center',
-    borderTopRightRadius: '9px',
-    borderTopLeftRadius: '9px',
-    padding: '9px',
-  },
-  slideContainer: {
-    height: '100%',
-  },
-  slide: {
-    minHeight: '986px'
   }
 }));
 
-export const Preview = ({price, tags, title}) => {
+export const Preview = ({price, tags, title, height}) => {
   const classes = useStyles();
   return (
-    <SwipeableViews
-      containerStyle={{height: 986}}
-      slideClassName={classes.slide}
-      axis="y"
-      resistance
-      enableMouseEvents
-    >
       <div className={classes.root}>
         <div className={classes.title}>
-          {title}
+          <Typography variant="h5" color="inherit" noWrap>
+            {title}
+          </Typography>
         </div>
-        <div className={classes.table}>
-          <img src={fork} alt="" />
-          <div className={classes.plate}>
-
-          </div>
-          <img src={knife} alt="" />
-        </div>
+        <Table/>
         <MenuThingy
-          price={3}
-          tags={['vegan']}
+          price={price}
+          tags={tags}
         />
       </div>
-      <DetailView/>
-    </SwipeableViews>
-
   );
 }
 
 Preview.defaultProps = {
-  tags: [],
+  price: 2,
+  title: 'Some Test',
+  tags: ['vegan'],
 }
 

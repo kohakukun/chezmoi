@@ -1,26 +1,26 @@
-import { virtualize, bindKeyboard } from 'react-swipeable-views-utils';
+import React, { useState } from 'react';
 import SwipeableViews from 'react-swipeable-views';
-import React, {useState} from 'react';
-import {Preview} from '../Preview';
+import { bindKeyboard, virtualize } from 'react-swipeable-views-utils';
+import { Preview } from '../Preview';
 
 
 const VirtualizeSwipeableViews = bindKeyboard(virtualize(SwipeableViews));
 
 
-export const FoodEventCarousel = ({foodEvents}) => {
+export const FoodEventCarousel = ({foodEvents, width, height}) => {
   const [index, setIndex] = useState(0);
   return (
-    <div>
-      <VirtualizeSwipeableViews
+    <VirtualizeSwipeableViews
+        containerStyle={{height}}
         slideCount={foodEvents.length}
         index={index}
         onChangeIndex={(index)=>{setIndex(index)}}
         slideRenderer={({index, key})=> {
-          return <Preview key={key} {...foodEvents[index]}/>;
+          return <Preview width={width} height={height} key={key} {...foodEvents[index]}/>
         }}
         enableMouseEvents
+        height={height}
       />
-    </div>
   );
 }
 
