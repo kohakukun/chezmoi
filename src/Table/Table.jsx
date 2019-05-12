@@ -1,8 +1,8 @@
 import React from 'react';
 import spoon from '../static/media/Spoon.svg';
 import knife from '../static/media/Knife.svg';
-import rim from '../static/media/Rim.svg';
-import inner from '../static/media/Inner.svg';
+import rim from '../static/media/Rim.png';
+import inner from '../static/media/Inner.png';
 import cloth from '../static/media/Cloth.svg';
 import food from '../static/media/Pizza.png';
 import { makeStyles } from '@material-ui/styles';
@@ -10,7 +10,6 @@ import autoPlay from 'react-swipeable-views-utils/lib/autoPlay';
 
 const useStyles = makeStyles(theme => ({
   table: {
-    // background: 'green',
     flexGrow: '1',
     display: 'flex',
   },
