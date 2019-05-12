@@ -70,11 +70,18 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const CreateEvent = ()=>{
+export const CreateEvent = () => {
   const classes = useStyles();
+  var current_date = new Date();
+
+  var today = current_date.getFullYear() + '-' + ('0' + (current_date.getMonth() + 1)).slice(-2) + '-' + ('0' + current_date.getDate()).slice(-2);
+  var now = ('0' + current_date.getHours()).slice(-2) + ':' + ('0' + current_date.getMinutes()).slice(-2) + ':' + ('0' + current_date.getSeconds()).slice(-2);
+
   const [form, setForm] = useState({
     title: '',
     description: '',
+    date: today,
+    time: now,
   });
 
   const handleInputChange = (event) => {
@@ -88,39 +95,46 @@ export const CreateEvent = ()=>{
 
   const handleSubmit = () => {
     const eventsStr = localStorage.getItem('events');
-    const events = eventsStr? JSON.parse(eventsStr) : [];
+    const events = eventsStr ? JSON.parse(eventsStr) : [];
     events.push(form);
     localStorage.setItem('events', JSON.stringify(events));
   }
 
   return (
-      <div backgroundColor="#D00606" className={classes.root}>
-        <TextField
-          id="title"
-          type="text"
-          label="enter title"
-          onChange={handleInputChange}
-          value={form.title}
-        />
-        <br />
-        <TextField
-          id="description"
-          type="text"
-          label="enter description"
-          multiline rows="5"
-          onChange={handleInputChange}
-          value={form.description}
-        />
-        <br />
-        <h1>
-          Details:
-            </h1>
-        <SwitchLabels />
-        <LocationSwitch />
-        <br/>
-        <Button variant="contained" onClick={handleSubmit}>
-          Create event
+    <div className={classes.root}>
+    <TextField
+        id="title"
+        type="text"
+        label="enter title"
+        onChange={handleInputChange}
+        value={form.title}
+      />
+      <br />
+      <TextField
+        id="description"
+        type="text"
+        label="enter description"
+        multiline rows="5"
+        onChange={handleInputChange}
+        value={form.description}
+      />
+      <h3>Details:</h3>
+      <TextField
+        id="date"
+        type="date"
+        value={form.date}
+      />
+      <TextField
+        id="time"
+        type="time"
+        value={form.time}
+      />
+      <SwitchLabels />
+      <LocationSwitch />
+      <br />
+      <Button variant="contained" onClick={handleSubmit}>
+        Create event
         </Button>
-      </div>
+    </div>
   );
 }
