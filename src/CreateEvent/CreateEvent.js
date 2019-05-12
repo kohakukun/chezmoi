@@ -1,6 +1,6 @@
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormGroup from '@material-ui/core/FormGroup';
-import Switch from '@material-ui/core/Switch';
+import Radio from '@material-ui/core/Radio';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/styles';
@@ -26,7 +26,7 @@ class SwitchLabels extends React.Component {
 
         <FormControlLabel
           control={
-            <Switch
+            <Radio
               checked={this.state.selectedValue === 'a'}
               onChange={this.handleChange}
               value="a"
@@ -37,7 +37,7 @@ class SwitchLabels extends React.Component {
         />
         <FormControlLabel
           control={
-            <Switch
+            <Radio
               checked={this.state.selectedValue === 'b'}
               onChange={this.handleChange}
               value="b"
@@ -48,14 +48,14 @@ class SwitchLabels extends React.Component {
         />
         <FormControlLabel
           control={
-            <Switch
+            <Radio
               checked={this.state.selectedValue === 'c'}
               onChange={this.handleChange}
               value="c"
               color="primary"
             />
           }
-          label="FLEISCH!!!!"
+          label="Meat"
         />
       </FormGroup>
     );

@@ -78,7 +78,7 @@ const App = (props) => {
             <div style={{width: '100%', height: '100%'}}>
               <ContainerDimensions>
                 {({width, height})=>{
-                  return <FoodEventCarousel width={width} height={height||584}/>
+                  return <FoodEventCarousel width={width} height={height||584} foodEvents={foodEvents}/>
                 }}
               </ContainerDimensions>
             </div>
