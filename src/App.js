@@ -1,6 +1,5 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
-import Hidden from '@material-ui/core/Hidden';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import React from 'react';
 import ContainerDimensions from 'react-container-dimensions';
@@ -9,6 +8,7 @@ import './App.css';
 import { AppDrawer } from './AppDrawer';
 import { LoginPage } from './LoginPage/LoginPage';
 import { Preview } from './Preview';
+import { FoodEventCarousel } from './FoodEventCarousel';
 import { RegisterUserPage } from './RegisterUserPage/RegisterUserPage';
 import { TopNavBar } from './TopNavBar';
 
@@ -68,14 +68,14 @@ const App = (props) => {
       >
         <AppDrawer />
       </Drawer>
-      <main className={classes.content}>
+      <div className={classes.content}>
         <div className={classes.toolbar} />
-        <Route path="/" component={()=> {
+        <Route path="/dining" component={()=> {
           return (
             <div style={{width: '100%', height: '100%'}}>
               <ContainerDimensions>
                 {({width, height})=>{
-                  return <Preview width={width} height={height}/>
+                  return <FoodEventCarousel width={width} height={height}/>
                 }}
               </ContainerDimensions>
             </div>
@@ -83,7 +83,7 @@ const App = (props) => {
         }} />
         <Route path="/login" component={LoginPage} />
         <Route path="/register-user" component={RegisterUserPage} />
-      </main>
+      </div>
     </div>
   );
 }
