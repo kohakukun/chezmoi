@@ -12,7 +12,7 @@ import jonathan from './jonathan.png';
 import valentin from './valentin.png';
 import hannah from './hannah.png';
 
-class ManageEvent extends React.Component {
+export class ManageEvent extends React.Component {
     render() {
         return (
             <div>

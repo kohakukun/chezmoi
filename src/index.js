@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from './App';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+import { SignupPage } from "./SignupPage/SignupPage";
 
 const theme = createMuiTheme({ typography: { useNextVariants: true } });
 
@@ -13,7 +14,7 @@ const theme = createMuiTheme({ typography: { useNextVariants: true } });
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <Router>
-      <App/>
+      <SignupPage/>
     </Router>
   </ThemeProvider>,
   document.getElementById('root'));
