@@ -14,7 +14,7 @@ const theme = createMuiTheme({ typography: { useNextVariants: true } });
 ReactDOM.render(
   <ThemeProvider theme={theme}>
     <Router>
-      <SignupPage/>
+      <App/>
     </Router>
   </ThemeProvider>,
   document.getElementById('root'));
