@@ -13,19 +13,13 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'none',
     },
-  },
-  appBar: {
-    marginLeft: drawerWidth,
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-    },
   }
 }));
 
 export const TopNavBar = ({handleDrawerToggle}) => {
   const classes = useStyles();
   return (
-    <AppBar position="fixed" className={classes.appBar}>
+    <AppBar position="sticky" color="default">
         <Toolbar>
           <IconButton
             color="inherit"

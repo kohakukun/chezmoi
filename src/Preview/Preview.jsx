@@ -22,35 +22,12 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     alignItems: 'flex-end',
 
-  },
-  menu: {
-    background: 'red',
-    maxHeight: '50px',
-    width: '80%',
-    minHeight: '50px',
-    alignSelf: 'center',
-    borderTopRightRadius: '9px',
-    borderTopLeftRadius: '9px',
-    padding: '9px',
-  },
-  slideContainer: {
-    height: '100%',
-  },
-  slide: {
-    minHeight: '986px'
   }
 }));
 
 export const Preview = ({price, tags, title, height}) => {
   const classes = useStyles();
   return (
-    <SwipeableViews
-      containerStyle={{height}}
-      axis="y"
-      resistance
-      enableMouseEvents      
-      slideStyle={{height}}
-    >
       <div className={classes.root}>
         <div className={classes.title}>
           {title}
@@ -61,13 +38,12 @@ export const Preview = ({price, tags, title, height}) => {
           tags={['vegan']}
         />
       </div>
-      <DetailView/>
-    </SwipeableViews>
-
   );
 }
 
 Preview.defaultProps = {
-  tags: [],
+  price: 2,
+  title: 'Some Test',
+  tags: ['vegan'],
 }
 
