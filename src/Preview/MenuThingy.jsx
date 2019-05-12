@@ -6,7 +6,7 @@ import {foodTags } from './constants';
 
 const useStyles = makeStyles(theme => ({
   menu: {
-    background: 'red',
+    background: theme.palette.primary.main,
     maxHeight: '50px',
     width: '80%',
     minHeight: '50px',
